@@ -2,7 +2,7 @@ import json
 import requests
  
 #Variables para el Token y la URL del chatbot
-TOKEN = "751988420:AAHrzn7RXWxVQQNha0tQUzyouE5lUcPde1g" #Cambialo por tu token
+TOKEN = "..." # poner el token
 URL = "https://api.telegram.org/bot" + TOKEN + "/"
  
  
