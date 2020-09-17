@@ -1,14 +1,12 @@
-#Importar librerias
 import json
 import requests
  
 #Variables para el Token y la URL del chatbot
-TOKEN = "751988420:AAHrzn7RXWxVQQNha0tQUzyouE5lUcPde1g" #Cambialo por tu token
+TOKEN = "..." #Poner el token
 URL = "https://api.telegram.org/bot" + TOKEN + "/"
  
- 
- 
-def update():
+
+def update():	
     #Llamar al metodo getUpdates del bot haciendo una peticion HTTPS (se obtiene una respuesta codificada)
     respuesta = requests.get(URL + "getUpdates")
  
