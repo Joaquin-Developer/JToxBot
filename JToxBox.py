@@ -46,7 +46,7 @@ def mensaje(update, context):
     if (update.message.text.upper().find("Hola") > 0):
         update.message.reply_text("Hola we")
     else:
-        update.message.reply_text("Holuuuu!")
+        update.message.reply_text("Tenías que decirme hola :(")
     pass
 
 def main():
