@@ -2,9 +2,7 @@
 import os
 import requests
 
-continuar = True
-
-while (continuar):
+while (True):
     #clean()
     send = input("Ingresar mensaje a enviar: ")
     id = "@Joaquin703"
@@ -18,8 +16,5 @@ while (continuar):
     requests.post(url, params=params)
     con = input("Presione x para salir: ")
     if con == "x":
-        continuar = False
+        break # exit while
 
-    pass
-
-    
