@@ -1,0 +1,30 @@
+{
+    "update_id": 311599816,
+    "message": {
+        "message_id": 243, 
+        "date": 1611628679, 
+        "chat": {
+            "id": 1268232801, 
+            "type": "private", 
+            "username": "Joaquin703",
+            "first_name": "Joaquín"
+        },
+        "text": "holieow", 
+        "entities": [], 
+        "caption_entities": [], 
+        "photo": [], 
+        "new_chat_members": [], 
+        "new_chat_photo": [], 
+        "delete_chat_photo": false, 
+        "group_chat_created": false, 
+        "supergroup_chat_created": false, 
+        "channel_chat_created": false, 
+        "from": {
+            "id": 1268232801, 
+            "first_name": "Joaquín", 
+            "is_bot":"Fals", 
+            "username": "Joaquin703", 
+            "language_code": "es"
+        }
+    }
+}
