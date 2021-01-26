@@ -32,8 +32,12 @@ def read_json_city_list():
     return json.loads(json_city_list)
 
 # Nota: OPTIMIZAR esta búsqueda:
+# implemnetar una búsqueda binaria
 def get_id_city(city):
     city_list_data = read_json_city_list()
+    # sorted alphabetically:
+    city_list_data = sorted(city_list_data, key=lambda k: k.get("name"), reverse=False)
+    
     for elem in city_list_data:
         if ((elem.get("name")).lower() == city.lower()):
             return str(elem.get("id"))
