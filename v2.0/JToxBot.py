@@ -30,7 +30,7 @@ def answer_weather(update, context):
     country = text[7:len(text)]
     
     if (not country.isspace() and len(country) != 0):
-        data = weather_info.return_weather(country)
+        data = weather_info.get_weather(country)
         update.message.reply_text(data)
     else:
         update.message.reply_text("Forma de úso: /clima [ciudad]. Ejemplo: /clima Montevideo")
