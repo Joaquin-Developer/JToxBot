@@ -1,0 +1,19 @@
+*****************
+* JToxBot v1.0  *
+*****************
+Hola, bienveinido a mi primer BOT con Telegram usando la API de Telegram.
+
+Puedes digitar los siguientes comandos para hacer consultas:
+
+/clima : Para saber el clima en Montevideo.
+frase_random : Para ver alguna frase random xd.
+/ayuda : Para ver este mensaje de ayuda.
+/start : Para que te mande un saludo bien perron.
+
+NOTA1:
+Por ahora, estas son las únicas opciones que programé en el bot, (es la versión 1.0 crack :) )
+NOTA2:
+Las funciones anteriores ni siquiere se lazaron aún a producción jsjs
+Es decir, solo le podés poner "ayuda" xd ahre
+
+Por mas info, hablá con Joaquín, mi desarrollador: @Joaquin703
