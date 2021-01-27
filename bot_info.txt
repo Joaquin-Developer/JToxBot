@@ -1,16 +1,17 @@
 *****************
-* JToxBot v1.0  *
+* JToxBot v2.0  *
+* BETA Edition  *
 *****************
-Hola, mi nombre es Tox, y soy un BOT experimental :))
+¡Hola 😁👋, mi nombre es Tox, y estoy aquí para hacer tu vida un poquito mas fácil!
 
-Puedes digitar los siguientes comandos para hacer consultas:
+Puedes digitar los siguientes comandos para hacerme consultas:
 
 /clima : Para ver datos del clima en una determinada ciudad.
-/frase_random : Para ver alguna frase random xd.
+/frase_random : Para ver alguna frase random.
 /ayuda : Para ver este mensaje de ayuda.
-/start : Para que te mande un saludo bien perron.
+/start : Para que te mande un saludo bien chingón.
 
-NOTA1:
-Por ahora, estas son las únicas opciones que programé en el bot, (es la versión 1.0 crack :) )
+Mi desarrollador se encuentra constantemente haciéndome mejoras y agregándome funcionalidades.
+Prometo ser más útil en un futuro 😔💔
 
 Por mas info, hablá con Joaquín, mi desarrollador: @Joaquin703
