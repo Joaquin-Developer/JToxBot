@@ -1,5 +1,5 @@
 # import pyowm, geojson
-import os, json, requests
+import os, json, requests, math
 from googletrans import Translator
 
 API_KEY = os.environ["PYOWN_API_KEY"]
@@ -38,20 +38,39 @@ def read_json_city_list():
     json_city_list = open(os.environ["PP_ROUTE"] + "/BOT_Telegram_Python/v2.0/data/city_list.json").read()
     return json.loads(json_city_list)
 
-# Nota: OPTIMIZAR esta búsqueda:
-# implemnetar una búsqueda binaria
 def get_id_city(city):
     city_list_data = read_json_city_list()
     # sorted alphabetically:
     city_list_data = sorted(city_list_data, key=lambda k: k.get("name"), reverse=False)
-    
-    for elem in city_list_data:
-        if ((elem.get("name")).lower() == city.lower()):
-            return str(elem.get("id"))
+
+    index = binary_search_get_city(city_list_data, city)
+    if index != -1:   
+        print(city_list_data[index]) 
+        return str(city_list_data[index].get("id"))
+
+    # for elem in city_list_data:
+    #     if ((elem.get("name")).lower() == city.lower()):
+    #         return str(elem.get("id"))
 
 def binary_search_get_city(city_list_data, objective):
+    # returns index of element in list:
+    print(objective)
     left = 0
-    right = 0
+    right = len(city_list_data) - 1
+    while (left <= right):
+        #mid = left + (right - left) // 2
+        mid = (left + right) // 2
+
+        if (city_list_data[mid].get("name") == objective):
+            return mid
+
+        if (city_list_data[mid].get("name") > objective):
+            right = mid - 1            
+        else:
+            left = mid + 1
+            
+    return -1
+                
 
 def kelvin_to_celcius(kelvin):
     return round(kelvin - 273.15)
