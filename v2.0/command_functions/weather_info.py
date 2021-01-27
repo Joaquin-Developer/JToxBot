@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # import pyowm, geojson
 import os, json, requests, math
 from googletrans import Translator

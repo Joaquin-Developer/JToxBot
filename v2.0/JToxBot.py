@@ -4,7 +4,7 @@
 # Functional BOT (25/01/2021) - Joaquin Parrilla
 
 import logging, os, json, random
-import weather_info    # custom module
+from command_functions import weather_info, search_wikipedia    # custom module
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 # Enable logging
@@ -35,6 +35,42 @@ def answer_weather(update, context):
     else:
         update.message.reply_text("Forma de úso: /clima [ciudad]. Ejemplo: /clima Montevideo")
 
+def wikipedia_search_pages(update, context):
+    search = update.message.text[0 : len(update.message.text)]
+
+    if len(search) != 0:
+        string_pages = search_wikipedia.search_pages(search)
+        if string_pages != None:
+            update.message.reply_text(string_pages)
+        else:
+            # error in wikipedia library
+            update.message.reply_text("No pude procesar tu búsqueda :(\n\nTox.")
+    else:
+        # user typed command error:
+        update.message.reply_text("Forma de úso: /wiki [búsqueda].\n Ejemplo: /wiki Uruguay\n\nTox.")
+
+def wikipedia_get_page(update, context):
+    generic_exception = Exception("Forma de úso: /wikipage [title]➡[nro_pagina]")
+    try:
+        search_params = update.message.text[5 : len(update.message.text)].split("➡")
+
+        if len(search_params) == 2:
+            title = search_params[0]
+            nro_page = int(search_params[1])
+            if len(search_params[0]) == 0 or len(search_params[1]) == 0 or (not search_params[1].isdigit()):
+                raise generic_exception
+            else:
+                # seguir ...
+                
+                print()
+        else:
+            raise generic_exception
+    except Exception as e:
+        update.message.reply_text(e)
+    else:
+        update.message.reply_text("...")
+        
+
 def echo(update, context):
     # Echo the user message.
     update.message.reply_text(update.message.text)
@@ -49,10 +85,13 @@ def read_greetings():
     return greetings_data[random_index].get("message")
 
 def reply_message(update, context):
-    if (update.message.text.lower().find("hola") >= 0):
+    if (update.message.text.lower().find("hol") >= 0):
         update.message.reply_text("Hola we")
-    elif (update.message.text != "help" and update.message.text != "start"):
-        update.message.reply_text("gei")
+    #elif (update.message.text != "help" and update.message.text != "start"):
+    else:
+        random_answers = ["me invocaste wey", "no toy", "ke", "zzzz", ":v", ":)", "¿ke kieres ahora?", "me juí"]
+        index = random.randint(0, len(random_answers) - 1)
+        update.message.reply_text(random_answers[index])
 
 def main():
     # Create the Updater and pass it your bot's token.
@@ -66,6 +105,11 @@ def main():
     dp.add_handler(MessageHandler(Filters.regex("clima"), answer_weather))
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("ayuda", help_command))
+
+    # FUNCTIONS IN DEVELOPMENT:
+    # dp.add_handler(MessageHandler(Filters.regex("wiki"), wikipedia_search_pages))
+    # dp.add_handler(MessageHandler(Filters.regex("wikipage"), wikipedia_get_page))
+
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, reply_message))
     # Start the Bot
