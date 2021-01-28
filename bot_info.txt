@@ -8,6 +8,7 @@ Puedes digitar los siguientes comandos para hacerme consultas:
 
 /clima : Para ver datos del clima en una determinada ciudad.
 /frase_random : Para ver alguna frase random.
+/wiki [búsqueda] : Para hacer una búsqueda en WikiPedia.
 /ayuda : Para ver este mensaje de ayuda.
 /start : Para que te mande un saludo bien chingón.
 
