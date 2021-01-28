@@ -51,6 +51,7 @@ def wikipedia_search_pages(update, context):
 
 def wikipedia_get_page(update, context):
     generic_exception = Exception("Forma de úso: /page [title]➡[nro_pagina]")
+    search_exception = Exception("¡Ups! Se produjo un error interno y no pude procesar tu búsqueda\n\nTox.")
     try:
         search_params = update.message.text[6 : len(update.message.text)].split("➡")
 
@@ -59,6 +60,8 @@ def wikipedia_get_page(update, context):
             title = search_params[0]
             nro_page = int(search_params[1])
             result_page = search_wikipedia.get_page(title, nro_page)
+            if not result_page:
+                raise search_exception
             
         else:
             raise generic_exception
