@@ -8,8 +8,8 @@ def get_page(name, number_page):
     try:
         page_name = wikipedia.search(translator.translate_text(name, 'en'))[number_page - 1]
         page = wikipedia.page(page_name)
-        content_page = translator.translate_text(page.content[0:5000], 'es')
-        text = "{}\n\n{}\n\nTox.".format(page.title, content_page)
+        content_page = translator.translate_text(page.content[0:3000], 'es')
+        text = "{}\n\n{} ...\n\nTox.".format(page.title, content_page)
     except Exception as e:
         print("Error: " + str(e))
         return None
