@@ -5,6 +5,7 @@ from typing import Any
 import requests
 from googletrans import Translator
 from core import config
+import utils
 
 # import pyowm, geojson
 
@@ -66,9 +67,9 @@ class WeatherInfo:
     @staticmethod
     def get_weather(city):
         """get weather info"""
-        id = get_id_city(city)
+        city_id = get_id_city(city)
 
-        if id is None:
+        if city_id is None:
             return "No se encontró la ciudad '{}'".format(city)
 
         resp = requests.get("http://api.openweathermap.org/data/2.5/weather?id=" + id + "&appid=" + config.API_KEY)
@@ -81,18 +82,7 @@ class WeatherInfo:
         cloudiness = str(resp_data.get("clouds").get("all")) + " %"
         weather = translate_weather_to_spanish(resp_data.get("weather")[0].get("description"))
 
-        # TODO Obtener el texto de text desde un archivo.
-
-        text = """
-        Datos de la ciudad de {}:
-        Temperatura actual: {} °C
-        Sensación térmica: {} °C
-        Temp. máxima: {} °C
-        Temp. mínima: {} °C
-        Porcentaje de nubes: {}
-        Clima actual: {}
-        
-        Tox."""
+        text: str = utils.get_from_config("Messages", "weather_message")
 
         data = text.format(city, actual_temperature, feels_like, max_temp, min_temp, cloudiness, weather)
         print(data)
