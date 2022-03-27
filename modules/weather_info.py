@@ -44,20 +44,20 @@ def get_id_city(city) -> str:
     city_list_data = sorted(city_list_data, key=lambda k: k.get("name"), reverse=False)
 
     index = binary_search_get_city(city_list_data, city)
-    if index != -1:
-        print(city_list_data[index])
-        return str(city_list_data[index].get("id"))
-    return None
+
+    if index == 1:
+        return None
+
+    print(city_list_data[index])
+    return str(city_list_data[index].get("id"))
 
 
 def translate_weather_to_spanish(original_text):
-    try:
-        translator = Translator(service_urls=["translate.googleapis.com"])
-        return translator.translate(original_text, dest="es").text
-
-    except Exception as ex:
-        print("Error: " + str(ex))
-        return "No se pudo obtener información del clima."
+    translator = Translator(service_urls=["translate.googleapis.com"])
+    return translator.translate(original_text, dest="es").text
+    # except Exception as ex:
+    #     print("Error: " + str(ex))
+    #     return "No se pudo obtener información del clima."
 
 
 class WeatherInfo:
