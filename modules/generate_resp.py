@@ -1,16 +1,16 @@
 # pylint: disable=missing-module-docstring
 import json
 import requests
-
-TOKEN = "..."  # Poner el token
-URL = "https://api.telegram.org/bot" + TOKEN + "/"
+from core import config
 
 
 class Resp:
+    """Response"""
+
     @staticmethod
     def update():
         # Llamar al metodo getUpdates del bot haciendo una peticion HTTPS (se obtiene una respuesta codificada)
-        resp = requests.get(URL + "getUpdates")
+        resp = requests.get(config.URL + "getUpdates")
         # Decodificar la respuesta recibida a formato UTF8 (se obtiene un string JSON)
         json_messages = resp.content.decode("utf8")
         # Convertir el string de JSON a un diccionario de Python
@@ -32,7 +32,7 @@ class Resp:
     @staticmethod
     def send_message(id_chat, text):
         """call the method sendMessage from the bot:"""
-        requests.get(URL + "sendMessage?text=" + text + "&chat_id=" + str(id_chat))
+        requests.get(config.URL + "sendMessage?text=" + text + "&chat_id=" + str(id_chat))
 
 
 if __name__ == "__main__":
